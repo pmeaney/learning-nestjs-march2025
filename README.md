@@ -69,3 +69,23 @@ The @Injectable() decorator in NestJS is a key part of its dependency injection 
 - **What @Injectable() Does** - When you mark a class with @Injectable(), you're telling NestJS that this class can:
   - Have its own dependencies injected (in this case, MessagesRepository)
   - Be injected into other classes (like controllers or other services)
+
+## Class constructor verbose vs shorthand example
+
+The public modifier automatically:
+- Creates a class property with the same name
+- Assigns the constructor parameter value to that property
+
+**Example:**
+
+```ts
+export class MessagesService { ...
+// This verbose approach:
+  messagesRepo: MessagesRepository;
+  constructor(messagesRepo: MessagesRepository) {
+    this.messagesRepo = messagesRepo;
+  }
+
+// Is equivalent to this shorthand:
+  constructor(public messagesRepo: MessagesRepository) {}
+```
