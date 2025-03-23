@@ -61,3 +61,11 @@ export class MessagesController {
   }
 }
 ```
+
+## the Injectable decorator
+
+The @Injectable() decorator in NestJS is a key part of its dependency injection system. 
+
+- **What @Injectable() Does** - When you mark a class with @Injectable(), you're telling NestJS that this class can:
+  - Have its own dependencies injected (in this case, MessagesRepository)
+  - Be injected into other classes (like controllers or other services)

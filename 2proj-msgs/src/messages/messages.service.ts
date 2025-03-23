@@ -1,5 +1,7 @@
+import { Injectable } from "@nestjs/common";
 import { MessagesRepository } from "./messages.repository";
 
+@Injectable()
 export class MessagesService {
   /**
   This:
@@ -11,8 +13,6 @@ export class MessagesService {
   
   Automagically equates to this:
     constructor(public messagesRepo: MessagesRepository) {}
-
-  
   */
 
   constructor(public messagesRepo: MessagesRepository) { }
