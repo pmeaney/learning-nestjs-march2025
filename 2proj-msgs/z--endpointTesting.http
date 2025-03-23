@@ -20,4 +20,4 @@ Content-Type: application/json
 }
 
 ### Get ye olde msg by id
-GET http://localhost:3000/messages/123
+GET http://localhost:3000/messages/745
