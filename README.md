@@ -6,6 +6,8 @@ Resources:
 - Stephen Grider's NestJS course on Udemy: https://www.udemy.com/course/nestjs-the-complete-developers-guide/
   - I'm a big fan of both Udemy & Stephen Grider
 
+## Project generation
+- Nest CLI (like many CLI scaffolders) auto-gen a .git dir.  use the `--skip-git` flag to avoid that: `nest new project-name --skip-git`
 
 ## Commonly used Design Patterns in NestJS to be familiar with:
 
