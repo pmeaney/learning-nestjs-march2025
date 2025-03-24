@@ -8,4 +8,10 @@ export class CpuService {
   // and provide it to the CpuService constructor
   // So, now in the CpuService we can define methods which make use of the PowerService
   constructor(private powerService: PowerService) { };
+
+  compute(a: number, b: number) {
+    console.log(`Drawing 10 watts of power from Power service`);
+    this.powerService.supplyPower(10);
+    return a + b;
+  }
 }
