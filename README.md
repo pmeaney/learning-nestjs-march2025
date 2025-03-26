@@ -91,3 +91,13 @@ export class MessagesService { ...
 // Is equivalent to this shorthand:
   constructor(public messagesRepo: MessagesRepository) {}
 ```
+
+
+
+## TypeORM
+
+I'm new to TypeORM, so I'll keep in mind these aspects it provides:
+
+- Auto-generates:
+  - Repository for a given module (Note: It won't generate any sort of visible repository file, it's done behind the scenes)
+  - Migration files
