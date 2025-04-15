@@ -101,3 +101,108 @@ I'm new to TypeORM, so I'll keep in mind these aspects it provides:
 - Auto-generates:
   - Repository for a given module (Note: It won't generate any sort of visible repository file, it's done behind the scenes)
   - Migration files
+
+
+# NestJS Files Guide
+
+> ## Core Module Files
+
+#### Module File (example.module.ts)
+This is the organizational unit that brings all components together. It uses the `@Module` decorator to define:
+- Which controllers belong to the module
+- Which providers (services) should be instantiated
+- Which modules are imported/exported
+
+The module file establishes the boundaries of your feature and manages dependencies.
+
+#### Controller File (example.controller.ts)
+Controllers handle incoming HTTP requests and return responses to the client:
+- Use `@Controller()` decorator to define routes
+- Handle specific HTTP methods using decorators like `@Get()`, `@Post()`, etc.
+- Extract data from requests using `@Body()`, `@Param()`, etc.
+- Usually don't contain business logic, delegating that to services
+
+#### Service File (example.service.ts)
+Services contain the business logic of your application:
+- Marked with `@Injectable()` decorator so they can be injected
+- Implement data manipulation, validation, and transformation
+- Interact with repositories/databases
+- Encapsulate complex operations and reusable logic
+- Follow the Single Responsibility Principle
+
+#### Entity File (example.entity.ts)
+Entities represent data structures in your database:
+- Define properties corresponding to database columns
+- Use decorators (often from TypeORM) like `@Entity()`, `@Column()`, etc.
+- Map JavaScript/TypeScript objects to database tables
+- May include validation constraints and relationship definitions
+
+#### Repository File (example.repository.ts)
+Repositories handle database operations for specific entities:
+- Extend TypeORM's `Repository` class or implement custom repository patterns
+- Provide methods for CRUD operations
+- Include complex queries specific to the entity
+- Abstract away database interactions from services
+- Custom repositories are often created by extending TypeORM's repository
+
+>## Other Common NestJS Files
+
+#### DTOs (Data Transfer Objects)
+**example.dto.ts**
+- Define the shape of data for requests and responses
+- Help with validation using class-validator decorators
+- Provide type safety across your application
+- Example: `CreateUserDto`, `UpdateUserDto`
+
+#### Interfaces
+**example.interface.ts**
+- Define custom TypeScript interfaces for your domain
+- Typically used for return types and complex object structures
+- Example: `User`, `ConfigOptions`
+
+#### Guards
+**example.guard.ts**
+- Determine if a request should proceed or be denied
+- Often used for authentication and authorization
+- Implement the `CanActivate` interface
+- Example: `AuthGuard`, `RolesGuard`
+
+#### Interceptors
+**example.interceptor.ts**
+- Transform data returned from route handlers
+- Modify the response before it's sent to the client
+- Implement timing logic or logging
+- Implement the `NestInterceptor` interface
+
+#### Pipes
+**example.pipe.ts**
+- Transform input data to the expected form
+- Validate input data
+- Can be global, controller-level, or route-level
+- Example: `ValidationPipe`, `ParseIntPipe`
+
+#### Filters
+**exception.filter.ts**
+- Handle exceptions that occur during request processing
+- Transform error responses
+- Implement the `ExceptionFilter` interface
+- Example: `HttpExceptionFilter`
+
+#### Middleware
+**example.middleware.ts**
+- Run before route handlers
+- Access request and response objects
+- Modify request/response or execute side effects
+- Example: `LoggerMiddleware`, `CorsMiddleware`
+
+#### Configuration
+**config.ts** or **.env**
+- Environment-specific settings
+- Usually combined with the `@nestjs/config` package
+- Helps with application configuration management
+
+#### Testing Files
+**example.spec.ts** or **example.e2e-spec.ts**
+- Unit tests and integration tests
+- Often created alongside the component they test
+- Follow naming convention of the file they test with `.spec` or `.e2e-spec` suffix
